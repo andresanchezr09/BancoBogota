@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Portal Interactivo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+
+
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            background: url(https://www.pexels.com/es-es/video/video-borroso-de-personas-trabajando-853789/)no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+        /* FONDO VIDEO */
+
+        .contenido__video {
+            background: #1C396B;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+
+        /* Estilos para la etiqueta "video" con la clase (.video)  */
+
+        .video {
+            position: absolute;
+            max-width: 300%;
+            width: 100%;
+        }
+
+
+        /* media queries */
+
+        @media(max-width: 900px) {
+            .video {
+                width: 150%;
+            }
+        }
+
+        @media(max-width: 650px) {
+            .video {
+                width: 280%;
+            }
+        }
+
+        @media(max-width: 480px) {
+            .video {
+                width: 300%;
+            }
+        }
+
+        #login-contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 300px;
+            background-color: #1c396b;
+            margin: 0 auto;
+            margin-top: 10%;
+            border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border: 0px solid #000000;
+            padding: 15px;
+        }
+
+        #login-logo {
+            width: 100%;
+            max-width: 101px;
+            margin: 0 auto;
+            height: 100px;
+            margin-top: -65px;
+            display: flex;
+        }
+
+        #login-formulario {
+            width: 100%;
+            margin: 0 auto;
+            height: 250px;
+            margin-top: 20px;
+        }
+
+        #login-usuario {
+            width: 100%;
+            max-width: 250px;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border: 0px solid #000000;
+            margin: 0 auto;
+            height: 20px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        #username {
+            background-color: #FFFFFF;
+            border: none;
+            height: 0px;
+            font-family: Helvetica;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        #password {
+            background-color: #FFFFFF;
+            border: none;
+            height: 0px;
+            font-family: Helvetica;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        #login-clave {
+            width: 100%;
+            max-width: 250px;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border: 0px solid #000000;
+            margin: 0 auto;
+            height: 20px;
+            margin-top: 15px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        #login-btn-ingresar {
+            min-width: 265px;
+            max-width: 265px;
+            background: linear-gradient(to right, rgba(0, 141, 162, 1) 0%, rgba(44, 86, 151, 1) 100%);
+            -webkit-border-radius: 2px;
+            border: 0px solid #000000;
+            margin: 0 auto;
+            height: 40px;
+            margin-top: 15px;
+            font-family: Helvetica;
+            font-size: 14px;
+            letter-spacing: 6px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+        }
+
+        #login-recordar-olvidada {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            height: 50px;
+            display: inline-flex;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+        }
+
+        #login-clave-olvidada {
+            font-family: Helvetica;
+            font-size: 13px;
+            min-width: 263px;
+            display: flex;
+            flex-wrap: nowrap;
+            text-decoration: none;
+            color: white;
+            margin-left: 12px;
+            word-break: break-all;
+        }
+
+            #login-clave-olvidada > a {
+                font-family: Helvetica;
+                font-size: 13px;
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+                text-decoration: none;
+                color: white;
+            }
+
+        @media (max-width:640px) {
+            #login-contenedor {
+                width: 80%;
+                max-width: 300px;
+                margin-top: 50%;
+                --margin-left: auto;
+                --margin-right: 0px;
+                height: 245px;
+            }
+        }
+
+        @media (min-width:640px) and (max-width:940px) {
+            #login-contenedor {
+                width: 80%;
+                max-width: 300px;
+                margin-top: 10%;
+                height: 245px;
+            }
+        }
+
+
+        /* Checkbox recordar */
+
+        #login-check-recordar {
+            width: 40%;
+            max-width: 150px;
+            margin-top: 0px;
+            margin-left: 110px;
+        }
+
+        #recordarme {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            font-family: Helvetica;
+            font-size: 14px;
+            margin-left: -15px;
+            color: white;
+        }
+
+
+        /* Personalizar el label (the container) */
+
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-family: Helvetica;
+            font-size: 14px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+        }
+
+
+            /* Ocultar el checkbox default del buscador */
+
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+
+        /* Crear un checkmark personalizado */
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            background-color: #eee;
+        }
+
+
+        /* Mouse over, agregar un gris para background color */
+
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+
+        /* Cuando el checkbox este marcado, cambiar a azul el background */
+
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+
+        /* Crear el checkmark/indicador (ocultar cuando no esta marcado) */
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+
+        /* Mostrar el checkmark cuando funcione */
+
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+
+        /* Estilo del checkmark/indicador */
+
+        .container .checkmark:after {
+            left: 4px;
+            top: 0px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .form-inline {
+            margin-left: -9px;
+        }
+
+        #msg-alert {
+            color: red;
+            width: 100%;
+            position: relative;
+            font-family: HelveticaLight;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 5px;
+            display: none;
+        }
+
+        #aviso-registro {
+            font-family: Helvetica;
+            font-size: 15px;
+            min-width: 263px;
+            display: flex;
+            flex-wrap: nowrap;
+            text-decoration: none;
+            color: white;
+            margin-left: 50px;
+            word-break: break-all;
+        }
+
+        /* Campos de escritura */
+        input[type=text], input[type=password] {
+            width: 98.5%;
+            padding: 6px;
+            margin: 6px 0 6px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        input[type=submit] {
+            width: 60%;
+            background: linear-gradient(to right, rgb(254 212 23) 0%, rgba(236, 172, 12, 1) 100%);
+            -webkit-border-radius: 2px;
+            border: 0px solid #000000;
+            margin: 0 auto;
+            height: 40px;
+            margin-top: 15px;
+            font-family: Helvetica;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 6px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            color: darkblue;
+        }
+
+            /* Botón envio*/
+            input[type=submit]:hover {
+                background-color: #e1b20e;
+            }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 15px;
+        }
+
+        #singup-btn {
+            min-width: 265px;
+            max-width: 265px;
+            background: linear-gradient(to right, rgb(254 212 23) 0%, rgba(236, 172, 12, 1) 100%);
+            color: darkblue;
+            padding: 14px 20px;
+            cursor: pointer;
+            -webkit-border-radius: 2px;
+            border: 0px solid #000000;
+            margin: 0 auto;
+            height: 40px;
+            margin-bottom: 15px;
+            font-family: Helvetica;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 6px;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-modal {
+            padding: 20px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        /* The Close Button (X) */
+        .close {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #f44336;
+                cursor: pointer;
+            }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenido__video">
+        <!--
+          autoplay: propiedad para que se reproduzca una ves que carga la página
+          loop: propiedad para el vídeo se repita infinitamente
+          muted: propiedad para que el vídeo no emita sonido
+        -->
+        <video class="video" autoplay="autoplay" loop="loop" muted="muted">
+            <source src="D:/user/Desktop/BancoBogota/Images/work.mp4" type="video/mp4" />
+            <source src="D:/user/Desktop/BancoBogota/Images/work.mp4" type="video/webm" />
+        </video>
+    </div>
+
+    <div id="estructura-login">
+        <div id="login-contenedor">
+            <div id="login-logo">
+                <img src="D:/user/Desktop/BancoBogota/Images/logo-login.png" />
+            </div>
+            <div id="login-formulario">
+                <div id="msg-alert">Fallo de Autenticación - Intentenlo de nuevo</div>
+                <div id="login-usuario">
+                    <div id="img-usuario">
+                        <img src="D:/user/Desktop/BancoBogota/Images/img-usuario.png" alt="" />
+                    </div>
+                    <input idorg="usuario" name="username" id="username" placeholder="Correo" type="text">
+                </div>
+                <div id="login-clave">
+                    <div id="img-usuario">
+                        <img src="D:/user/Desktop/BancoBogota/Images/img-clave.png" alt="" />
+                    </div>
+                    <input idorg="clave" name="password" id="password" placeholder="Contraseña" type="password">
+                </div>
+                <input type="submit" id="login-btn-ingresar" value="INGRESAR">
+                <div id="login-recordar-olvidada">
+                    <div id="login-check-recordar">
+                        <label class="container">
+                            <div id="recordarme">Recordarme</div>
+                            <input type="checkbox" id="saveCredencials" checked="">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <a id="login-clave-olvidada" href="">
+                        <div>¿Olvidaste tu contraseña?</div>
+                    </a>
+                </div>
+                <div id="aviso-registro">
+                    <p>¿Aún no estas en el sistema?</p>
+                </div>
+            </div>
+            <!-- Trigger/Open The Modal -->
+            <button id="singup-btn">REGISTRARSE</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content animate">
+                    <form action="action_page.php" style="border:1px solid #ccc">
+                        <div class="container-modal">
+                            <h1>Registro Empleado</h1>
+                            <p>Por favor completa los siguientes datos para completar el registro.</p>
+                            <hr>
+
+                            <label for="email"><b>Correo</b></label>
+                            <input type="text" placeholder="Correo" name="email" required>
+
+                            <hr>
+
+                            <label for="psw"><b>Contraseña</b></label>
+                            <input type="password" placeholder="Contraseña" name="psw" required>
+
+                            <hr>
+
+                            <label for="psw-repeat"><b>Repetir Contraseña</b></label>
+                            <input type="password" placeholder="Contraseña" name="psw-repeat" required>
+
+                            <hr>
+
+                            <label for="nombre"><b>Nombre Completo</b></label>
+                            <input type="text" placeholder="Nombres y Apellidos" name="nombre" required>
+
+                            <hr>
+
+                            <label for="edad"><b>Edad</b></label>
+                            <input type="number" placeholder="Edad" name="edad" required>
+
+                            <label for="sexo"><b>Sexo</b></label>
+                            <select id="country" name="country">
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Prefiero no decirlo</option>
+                            </select>
+
+                            <hr>
+
+                            <label for="cargo"><b>Cargo</b></label>
+                            <input type="text" placeholder="Cargo" name="cargo" required>
+
+                            <hr>
+
+                            <label for="salario"><b>Salario</b></label>
+                            <input type="number" placeholder="Ej: 1500000" name="salario" required>
+
+
+                            <div class="clearfix">
+                                <button id="singup-btn" type="submit">REGISTRARSE</button>
+                            </div>
+                        </div>
+                    </form>
+                        <span class="close">&times;</span>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Get the modal */
+        var modal = document.getElementById("myModal");
+
+        /* Get the button that opens the modal */
+        var btn = document.getElementById("singup-btn");
+
+        /* Get the <span> element that closes the modal */
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
